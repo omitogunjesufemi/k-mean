@@ -2,12 +2,20 @@
 """
 """
 from k_mean_algorithm import k_mean_algorithm
-from data_entry import get_data
+from data_entry import read_data, scale_data
 
-file_name = "../../Downloads/fifa_dataset/archive/players_22.csv"
 
-features = ["overall", "potential", "wage_eur", "value_eur", "age"]
+def main(file_name, features, k, iterations):
+    """
+    """
+    players = read_data(file_name, features)
+    
+    data = scale_data(csv_data=players, features=features)
 
-data = get_data(file_name, features)
+    centroids, labels = k_mean_algorithm(data, k, iterations)
+    
+    print(centroids)
 
-k_mean_algorithm(data, 5, 100)
+    print(players[labels == 4][['short_name'] + features])
+    
+    return (centroids, labels)

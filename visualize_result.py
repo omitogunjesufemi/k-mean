@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from IPython.display import clear_output
 
 
-def plot_clusters(data, labels, centroids, iteration):
+def plot_clusters(data, labels, centroids, iteration, last_itr):
     """
     A function to visualize on a two-plane plot for all iteration
     - PCA: decomposes a n-dimensional data into 2-dimensional data
@@ -22,4 +22,8 @@ def plot_clusters(data, labels, centroids, iteration):
     plt.title(f"Iteration {iteration}")
     plt.scatter(x=data_2d[:, 0], y=data_2d[:, 1], c=labels)
     plt.scatter(x=centroids_2d[:, 0], y=centroids_2d[:, 1])
-    plt.show()
+    plt.pause(0.5)
+    if last_itr:
+        plt.show()
+    else:
+        plt.show(block=False)
