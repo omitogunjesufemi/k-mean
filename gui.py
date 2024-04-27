@@ -17,7 +17,7 @@ def run_k_means(filepath, features, k, iterations):
     print(features)
     centroids, labels = main(file_name=filepath, features=features, k=int(k), iterations=int(iterations))
     clear_frame()
-    result_label = ctk.CTkLabel(master=frame, text=centroids)
+    result_label = ctk.CTkLabel(master=frame, text=centroids.to_string())
     result_label.grid(row=0, column=0, padx=10, pady=20)
     
     
